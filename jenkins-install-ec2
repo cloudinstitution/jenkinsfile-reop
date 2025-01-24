@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Update system packages
+sudo yum update -y
+
+# Install Java (Jenkins requires Java)
+sudo yum install java-openjdk11 -y
+
+# Add the Jenkins repo and import the GPG key
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+
+# Install Jenkins
+sudo yum install jenkins -y
+
+# Start Jenkins service
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+
+# Print Jenkins initial admin password
+echo "Jenkins Installation Complete!"
+echo "To unlock Jenkins, use the following admin password:"
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
