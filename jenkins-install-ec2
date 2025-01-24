@@ -3,12 +3,14 @@
 # Update system packages
 sudo yum update -y
 
-# Install Java (Jenkins requires Java)
-sudo yum install java-openjdk11 -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo  https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum upgrade
 
-# Add the Jenkins repo and import the GPG key
-sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
-sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+# Install Java (Jenkins requires Java)
+sudo dnf install java-17-amazon-corretto -y
+
+
 
 # Install Jenkins
 sudo yum install jenkins -y
@@ -16,6 +18,7 @@ sudo yum install jenkins -y
 # Start Jenkins service
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
+sudo systemctl status jenkins
 
 
 # Print Jenkins initial admin password
