@@ -18,8 +18,6 @@ sudo yum install jenkins -y
 # Start Jenkins service
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
-sudo systemctl status jenkins
-
 
 # Print Jenkins initial admin password
 echo "Jenkins Installation Complete!"
