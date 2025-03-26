@@ -3,20 +3,17 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                echo "hi"
-                sh '''#!/bin/bash
-                 touch /tmp/test.txt
-                '''
+                echo "stage-1"
             }
         }
         stage('Test') { 
             steps {
-            echo "hello"
+            echo "stage-2"
             }
         }
         stage('Deploy') { 
             steps {
-                echo "hi-2"
+                echo "stage-3"
             }
         }
     }
